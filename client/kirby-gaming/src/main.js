@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp, watch } from 'vue'
 import App from './App.vue'
 import router from './router'
 
@@ -18,4 +18,20 @@ const i18n = createI18n({
 const app = createApp(App)
 app.use(router)
 app.use(i18n)
+
+const setDirection = (locale) => {
+  const dir = locale === 'ar' ? 'rtl' : 'ltr'
+  document.documentElement.setAttribute('dir', dir)
+  document.documentElement.setAttribute('lang', locale)
+}
+
+// Apply direction on first load
+setDirection(i18n.global.locale.value)
+
+// Watch for language changes and update direction
+watch(i18n.global.locale, (newLocale) => {
+  console.log('Locale changed to:', newLocale)
+  setDirection(newLocale)
+})
+
 app.mount('#app')

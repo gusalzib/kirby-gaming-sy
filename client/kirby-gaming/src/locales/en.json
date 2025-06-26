@@ -15,11 +15,39 @@
     "home": "Home",
     "about": "About", 
     "gallery": "Photo gallery",
-    
+
     "aboutTitle": "About Kirby Gaming",
     "aboutText": "Kirby Gaming is a vibrant gaming café located at the heart of campus. We offer an exciting space for students to relax, compete, and socialize — with a great selection of games, desserts, and drinks.",
     "featureGames": "PlayStation, Pool, Foosball & more",
     "featureDesserts": "Delicious cheesecakes and sweets",
     "featureDrinks": "Coffee, Boba, and signature drinks",
-    "featureCommunity": "Perfect spot to hang out with friends"
+    "featureCommunity": "Perfect spot to hang out with friends",
+
+
+    "form": {
+        "name": "Full Name",
+        "title": "Title (Mr./Ms./Dr.)",
+        "fieldOfStudy": "Field of Study",
+        "phoneOrEmail": "Phone or Email"
+    },
+    "admin": {
+        "registerMember": "Register New Member",
+        "register": "Register",
+        "logVisit": "Log Visit for Member",
+        "selectMember": "Select Member",
+        "logVisitBtn": "Log Visit",
+        "allMembers": "All Members",
+        "noMembers": "No members yet.",
+        "visits": "Visits",
+        "searchMember": "Search Member by Name or Field"
+    },
+    "activities": {
+        "PlayStation": "PlayStation",
+        "Foosball": "Snooker",
+        "Pool Table": "Pool Table",
+        "Board Games": "Board Games",
+        "Snacks": "Snacks",
+        "Drinks": "Drinks",
+        "Desserts": "Desserts"
+    }
 }

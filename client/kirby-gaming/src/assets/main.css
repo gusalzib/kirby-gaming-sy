@@ -41,7 +41,7 @@ body {
   font-family: 'Cairo', sans-serif;
   background-color: #0a0a0a;
   color: #f0f0f0;
-  direction: rtl; /* default */
+  /* direction: rtl; default */
 }
 
 .container {

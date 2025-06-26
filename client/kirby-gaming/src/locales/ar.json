@@ -21,5 +21,32 @@
     "featureGames": "بلايستيشن، بلياردو، فوتبول طاولة والمزيد",
     "featureDesserts": "تشيزكيك وحلويات لذيذة",
     "featureDrinks": "قهوة، بوبا، ومشروبات مميزة",
-    "featureCommunity": "مكان مثالي لقضاء الوقت مع الأصدقاء"
+    "featureCommunity": "مكان مثالي لقضاء الوقت مع الأصدقاء",
+
+    "form": {
+        "name": "الاسم الكامل",
+        "title": "اللقب (أ./د.)",
+        "fieldOfStudy": "مجال الدراسة",
+        "phoneOrEmail": "رقم الهاتف أو البريد الإلكتروني"
+    },
+    "admin": {
+        "registerMember": "تسجيل عضو جديد",
+        "register": "تسجيل",
+        "logVisit": "تسجيل زيارة للعضو",
+        "selectMember": "اختر العضو",
+        "logVisitBtn": "تسجيل الزيارة",
+        "allMembers": "جميع الأعضاء",
+        "noMembers": "لا يوجد أعضاء حتى الآن.",
+        "visits": "عدد الزيارات",
+        "searchMember": "ابحث عن العضو بالاسم أو التخصص"
+    },
+    "activities": {
+        "PlayStation": "بلايستيشن",
+        "Foosball": "سنوكر",
+        "Pool Table": "طاولة بلياردو",
+        "Board Games": "ألعاب الطاولة",
+        "Snacks": "وجبات خفيفة",
+        "Drinks": "مشروبات",
+        "Desserts": "حلويات"
+    }
 }
