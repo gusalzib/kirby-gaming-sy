@@ -27,7 +27,8 @@
         "name": "الاسم الكامل",
         "title": "اللقب (أ./د.)",
         "fieldOfStudy": "مجال الدراسة",
-        "phoneOrEmail": "رقم الهاتف أو البريد الإلكتروني"
+        "phoneOrEmail": "رقم الهاتف أو البريد الإلكتروني",
+        "dateOfBirth": "تاريخ الميلاد"
     },
     "admin": {
         "registerMember": "تسجيل عضو جديد",
@@ -38,7 +39,13 @@
         "allMembers": "جميع الأعضاء",
         "noMembers": "لا يوجد أعضاء حتى الآن.",
         "visits": "عدد الزيارات",
-        "searchMember": "ابحث عن العضو بالاسم أو التخصص"
+        "searchMember": "ابحث عن العضو بالاسم أو التخصص",
+        "purchaseAmount": "قيمة المشتريات",
+        "totalSpentMonth": "إجمالي المشتريات هذا الشهر",
+        "birthdaysTomorrow": "أعياد الميلاد غدًا",
+        "noBirthdaysTomorrow": "لا يوجد أعضاء لديهم عيد ميلاد غدًا.",
+        "bigSpenders": "المنفقون الكبار (أكثر من ٥٠٠,٠٠٠ هذا الشهر)",
+        "noBigSpenders": "لا يوجد أعضاء أنفقوا أكثر من ٥٠٠,٠٠٠ هذا الشهر."
     },
     "activities": {
         "PlayStation": "بلايستيشن",
@@ -48,5 +55,6 @@
         "Snacks": "وجبات خفيفة",
         "Drinks": "مشروبات",
         "Desserts": "حلويات"
-    }
+    },
+    "currencySymbol": "ل.س"
 }

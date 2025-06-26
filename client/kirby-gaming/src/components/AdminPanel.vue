@@ -6,6 +6,7 @@
         <input v-model="form.name" :placeholder="$t('form.name')" required />
         <input v-model="form.title" :placeholder="$t('form.title')" required />
         <input v-model="form.fieldOfStudy" :placeholder="$t('form.fieldOfStudy')" required />
+        <input v-model="form.dateOfBirth" :placeholder="$t('form.dateOfBirth')" type="date" required />
         <input v-model="form.phoneOrEmail" :placeholder="$t('form.phoneOrEmail')" required />
         <button type="submit">{{ $t('admin.register') }}</button>
       </form>
@@ -18,7 +19,13 @@
         :placeholder="$t('admin.searchMember')"
         @input="filterMembers"
         />
-
+        <input
+            v-model.number="purchaseAmount"
+            type="number"
+            min="0"
+            step="0.01"
+            :placeholder="$t('admin.purchaseAmount')"
+        />
         <!-- Filtered results list -->
         <ul class="search-results">
         <li
@@ -46,8 +53,13 @@
       <div v-for="member in members" :key="member._id" class="member-card">
         <h3>{{ member.name }} ({{ member.title }})</h3>
         <p><strong>{{ $t('form.fieldOfStudy') }}:</strong> {{ member.fieldOfStudy }}</p>
+        <p><strong>{{ $t('form.dateOfBirth') }}:</strong> {{ new Date(member.dateOfBirth).toLocaleDateString() }}</p>
         <p><strong>{{ $t('form.phoneOrEmail') }}:</strong> {{ member.phoneOrEmail }}</p>
         <p><strong>{{ $t('admin.visits') }}:</strong> {{ member.visitHistory.length }}</p>
+        <p>
+            <strong>{{ $t('admin.totalSpentMonth') }}:</strong>
+            {{ getMonthlyTotal(member) }} {{ $t('currencySymbol') }}
+        </p>
         <ul>
           <li v-for="visit in member.visitHistory" :key="visit._id">
             {{ new Date(visit.date).toLocaleDateString() }} —
@@ -55,6 +67,23 @@
           </li>
         </ul>
       </div>
+
+
+    <!-- Birthdays Tomorrow -->
+    <h2>{{ $t('admin.birthdaysTomorrow') }}</h2>
+    <div v-if="birthdaysTomorrow.length === 0"> {{ $t('admin.noBirthdaysTomorrow') }}</div>
+    <div v-for="member in birthdaysTomorrow" :key="member._id" class="member-card">
+        <h3>{{ member.name }} ({{ member.title }})</h3>
+        <p><strong>{{ $t('form.dateOfBirth') }}:</strong> {{ new Date(member.dateOfBirth).toLocaleDateString() }}</p>
+        </div>
+
+        <!-- Big Spenders -->
+        <h2>{{ $t('admin.bigSpenders') }}</h2>
+        <div v-if="bigSpenders.length === 0"> {{ $t('admin.noBigSpenders') }}</div>
+        <div v-for="member in bigSpenders" :key="member._id" class="member-card">
+        <h3>{{ member.name }} ({{ member.title }})</h3>
+        <p><strong>{{ $t('admin.totalSpentMonth') }}:</strong> {{ getMonthlyTotal(member) }} {{ $t('currencySymbol') }}</p>
+    </div>
     </div>
   </template>
   
@@ -62,7 +91,31 @@
   <script setup>
   import AppHeader from '../components/AppHeader.vue'
   import { ref, onMounted } from 'vue'
+  import { computed } from 'vue'
   import axios from 'axios'
+
+
+// 1. Members with birthday tomorrow
+const birthdaysTomorrow = computed(() => {
+  const tomorrow = new Date()
+  tomorrow.setDate(tomorrow.getDate() + 1)
+  const month = tomorrow.getMonth()
+  const date = tomorrow.getDate()
+
+  return members.value.filter(member => {
+    if (!member.dateOfBirth) return false
+    const dob = new Date(member.dateOfBirth)
+    return dob.getMonth() === month && dob.getDate() === date
+  })
+})
+
+// 2. Members who spent over 500,000 in the last month
+const bigSpenders = computed(() => {
+  return members.value.filter(member => {
+    const total = parseFloat(getMonthlyTotal(member))
+    return total > 500000
+  })
+})
   
   const form = ref({
     name: '',
@@ -74,9 +127,9 @@
   const members = ref([])
   const selectedMemberId = ref('')
   const visitActivities = ref([])
-  
+  const purchaseAmount = ref(0)
   const allActivities = [
-    'PlayStation', 'Foosball', 'Pool Table',
+    'PlayStation', 'Pool Table',
     'Board Games', 'Snacks', 'Drinks', 'Desserts'
   ]
 
@@ -100,7 +153,15 @@ const selectMember = (member) => {
   filteredMembers.value = []
 }
 
+const getMonthlyTotal = (member) => {
+  const oneMonthAgo = new Date()
+  oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1)
 
+  return member.visitHistory
+    .filter(v => new Date(v.date) >= oneMonthAgo)
+    .reduce((sum, v) => sum + (v.purchaseAmount || 0), 0)
+    .toFixed(2)
+}
   
   const loadMembers = async () => {
     const res = await axios.get('http://localhost:5001/api/members')
@@ -115,18 +176,20 @@ const selectMember = (member) => {
   
   const registerMember = async () => {
     await axios.post('http://localhost:5001/api/members', form.value)
-    form.value = { name: '', title: '', fieldOfStudy: '', phoneOrEmail: '' }
+    form.value = { name: '', title: '', fieldOfStudy: '', phoneOrEmail: '', dateOfBirth: '' }
     await loadMembers()
   }
   
   const logVisit = async () => {
-    if (!selectedMemberId.value || visitActivities.value.length === 0) return
-    await axios.post(`http://localhost:5001/api/members/${selectedMemberId.value}/visit`, {
-      activities: visitActivities.value
-    })
-    visitActivities.value = []
-    await loadMembers()
-  }
+        if (!selectedMemberId.value || visitActivities.value.length === 0) return
+        await axios.post(`http://localhost:5001/api/members/${selectedMemberId.value}/visit`, {
+            activities: visitActivities.value,
+            amount: purchaseAmount.value
+        })
+        visitActivities.value = []
+        purchaseAmount.value = 0
+        await loadMembers()
+    }
   
   onMounted(loadMembers)
   </script>

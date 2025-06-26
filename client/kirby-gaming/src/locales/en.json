@@ -28,7 +28,8 @@
         "name": "Full Name",
         "title": "Title (Mr./Ms./Dr.)",
         "fieldOfStudy": "Field of Study",
-        "phoneOrEmail": "Phone or Email"
+        "phoneOrEmail": "Phone or Email",
+        "dateOfBirth": "Date of Birth"
     },
     "admin": {
         "registerMember": "Register New Member",
@@ -39,7 +40,13 @@
         "allMembers": "All Members",
         "noMembers": "No members yet.",
         "visits": "Visits",
-        "searchMember": "Search Member by Name or Field"
+        "searchMember": "Search Member by Name or Field",
+        "purchaseAmount": "Purchase Amount",
+        "totalSpentMonth": "Total Spent This Month",
+        "birthdaysTomorrow": "Birthdays Tomorrow",
+        "noBirthdaysTomorrow": "No members have a birthday tomorrow.",
+        "bigSpenders": "Big Spenders (Over 500,000 this month)",
+        "noBigSpenders": "No members spent more than 500,000 this month."
     },
     "activities": {
         "PlayStation": "PlayStation",
@@ -49,5 +56,6 @@
         "Snacks": "Snacks",
         "Drinks": "Drinks",
         "Desserts": "Desserts"
-    }
+    },
+    "currencySymbol": "SYR"
 }
