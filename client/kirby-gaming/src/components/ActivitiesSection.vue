@@ -4,7 +4,7 @@
       <ul>
         <li>{{ $t('ps') }}</li>
         <li>{{ $t('pool') }}</li>
-        <li>{{ $t('foosball') }}</li>
+        <li>{{ $t('snooker') }}</li>
         <li>{{ $t('other_games') }}</li>
       </ul>
     </section>

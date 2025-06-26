@@ -1,15 +1,25 @@
 {
-    "title": "Kirby Café",
-    "welcome": "Welcome to Kirby Café",
+    "title": "Kirby Gaming Hall",
+    "welcome": "Welcome to Kirby Gaming Hall",
     "tagline": "Enjoy games, drinks, and desserts with your friends on campus",
     "activities": "Available Activities",
     "menu": "Drinks and Desserts Menu",
     "ps": "🎮 PlayStation",
     "pool": "🎱 Pool Table",
-    "foosball": "⚽ Foosball Table",
+    "snooker": "Snooker Table",
     "other_games": "🕹️ Other Video Games",
     "coffee": "☕ Turkish Coffee - SAR 5",
     "mocha": "🍫 Mocha Chocolate - SAR 8",
     "cheesecake": "🍰 Cheesecake - SAR 10",
-    "boba": "🧋 Boba Drink - SAR 12"
+    "boba": "🧋 Boba Drink - SAR 12",
+    "home": "Home",
+    "about": "About", 
+    "gallery": "Photo gallery",
+    
+    "aboutTitle": "About Kirby Gaming",
+    "aboutText": "Kirby Gaming is a vibrant gaming café located at the heart of campus. We offer an exciting space for students to relax, compete, and socialize — with a great selection of games, desserts, and drinks.",
+    "featureGames": "PlayStation, Pool, Foosball & more",
+    "featureDesserts": "Delicious cheesecakes and sweets",
+    "featureDrinks": "Coffee, Boba, and signature drinks",
+    "featureCommunity": "Perfect spot to hang out with friends"
 }

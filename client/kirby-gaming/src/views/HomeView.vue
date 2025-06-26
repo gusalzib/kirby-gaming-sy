@@ -2,8 +2,9 @@
   <div>
     <AppHeader />
     <HeroSection />
-    <ActivitiesSection />
-    <MenuSection />
+    <!-- <ActivitiesSection /> -->
+    <PhotoGallery />
+    <!-- <MenuSection /> -->
   </div>
 </template>
 
@@ -12,4 +13,5 @@ import AppHeader from '../components/AppHeader.vue'
 import HeroSection from '../components/HeroSection.vue'
 import ActivitiesSection from '../components/ActivitiesSection.vue'
 import MenuSection from '../components/MenuSection.vue'
+import PhotoGallery from '@/components/PhotoGallery.vue'
 </script>

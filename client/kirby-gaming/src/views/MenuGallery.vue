@@ -1,4 +1,5 @@
 <template>
+    <AppHeader />
     <section class="menu-gallery section">
       <h2>{{ $t('menu') }}</h2>
       <div class="image-grid">
@@ -13,6 +14,7 @@
   </template>
   
   <script setup>
+  import AppHeader from '../components/AppHeader.vue'
   const menuImages = [
     new URL('../assets/menu/01.jpg', import.meta.url).href,
     new URL('../assets/menu/02.jpg', import.meta.url).href,
