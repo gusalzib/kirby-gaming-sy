@@ -4,7 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(cors());
@@ -21,7 +21,10 @@ mongoose.connect(process.env.MONGO_URI, {
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
-
+// Sample route
+app.get('/api', (req, res) => {
+    res.json({ message: 'Hello from the backend!' });
+  });
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
